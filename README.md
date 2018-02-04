@@ -9,5 +9,6 @@ Docker compose consist of
 - Grafana
 - Influxdb
 - Chronograf
+
 Those are best software testing enviroment that we can find this day...but mainly in this tutorial we're going to use only 3 of 5 which is Grafana,Influxdb and Chronograf
 
