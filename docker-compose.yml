@@ -1,0 +1,48 @@
+version: "3"
+services:
+
+  wiremock:
+    container_name: wiremock-standalone
+    image: rodolpheche/wiremock:latest
+    ports:
+      - '8888:8080'
+    volumes:
+      - './wiremock:/home/wiremock'
+      
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "30000:3000"
+    volumes:
+      - "${GRAFANA_DATA_DIR}:/var/lib/grafana"
+    restart: always
+    networks:
+      - monitor
+    depends_on:
+      - influxdb
+      - chronograf
+
+  influxdb:
+    container_name: influxdb
+    image: influxdb
+    ports:
+      - "38086:8086"
+    volumes:
+      - "${INFLUXDB_DATA_DIR}:/var/lib/influxdb"
+    networks:
+      - monitor
+
+  chronograf:
+    container_name: chronograf
+    image: chronograf
+    ports:
+      - "38888:8888"
+    command: --influxdb-url=http://influxdb:8086
+    networks:
+      - monitor
+    depends_on:
+      - influxdb
+
+networks:
+  monitor:

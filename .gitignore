@@ -1,3 +1,6 @@
+#remove docker data
+docker_data/*
+
 *.class
 *.log
 wiremock/*.jar
