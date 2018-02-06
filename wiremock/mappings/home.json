@@ -1,0 +1,13 @@
+{
+	"request":{
+		"urlPattern":"/home",
+		"method":"GET"
+	},
+	"response":{
+		"status":200,
+		"headers":{
+			"Content-Type":"application/json"
+		},
+		"body":"{\"_id\": \"123\"}"
+	}
+}
