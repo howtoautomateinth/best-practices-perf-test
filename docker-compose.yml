@@ -10,12 +10,12 @@ services:
       - './wiremock:/home/wiremock'
       
   grafana:
-    image: grafana/grafana
-    container_name: grafana
+    image: grafana_hta
+    build:
+      context: dockerfile/grafana
+    container_name: grafana_hta
     ports:
       - "30000:3000"
-    volumes:
-      - "${GRAFANA_DATA_DIR}:/var/lib/grafana"
     restart: always
     networks:
       - monitor
