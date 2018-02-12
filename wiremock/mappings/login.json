@@ -1,0 +1,25 @@
+{
+	"request":{
+		"urlPattern":"/login",
+		"method":"POST",
+		"headers": {
+			"Content-Type": {
+			"equalTo": "application/json"
+			},
+			"Authorization" : {
+				"equalTo" : "apikey"
+			}
+		},
+		"bodyPatterns" : [ {
+			"matchesJsonPath" : "$.username",
+			"matchesJsonPath" : "$.password"
+		} ]
+	},
+	"response":{
+		"status":200,
+		"headers":{
+			"Content-Type":"application/json"
+		},
+		"body":"{\"_post\": \"post_data\"}"
+	}
+}

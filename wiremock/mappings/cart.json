@@ -1,0 +1,25 @@
+{
+	"request":{
+		"urlPattern":"/cart",
+		"method":"POST",
+		"headers": {
+			"Content-Type": {
+			"equalTo": "application/json"
+			},
+			"Authorization" : {
+				"equalTo" : "apikey"
+			}
+		},
+		"bodyPatterns" : [ {
+			"matchesJsonPath" : "$.item",
+			"matchesJsonPath" : "$.quantity"
+		} ]
+	},
+	"response":{
+		"status":200,
+		"headers":{
+			"Content-Type":"application/json"
+		},
+		"bodyFileName":"../response/cart_response.json"
+	}
+}
