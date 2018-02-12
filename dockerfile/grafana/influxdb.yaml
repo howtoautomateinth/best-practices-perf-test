@@ -1,29 +1,29 @@
  # list of datasources that should be deleted from the database
 delete_datasources:
-   - name: Graphite
+   - name: "Influxdb"
      org_id: 1
 
  # list of datasources to insert/update depending
  # whats available in the datbase
 datasources:
    # <string, required> name of the datasource. Required
- - name: Influxdb
+ - name: "Influxdb"
    # <string, required> datasource type. Required
-   type: influxdb
+   type: "influxdb"
    # <string, required> access mode. direct or proxy. Required
-   access: direct
+   access: "direct"
    # <int> org id. will default to org_id 1 if not specified
    org_id: 1
    # <string> url
-   url: http://influxdb:8086
+   url: "http://localhost:38086"
    # <string> database password, if used
    password:
    # <string> database user, if used
    user:
    # <string> database name, if used
-   database: myperfdb
+   database: "myperfdb"
    # <bool> enable/disable basic auth
-   basic_auth: disable
+   basic_auth: false
    # <string> basic auth username
    basic_auth_user:
    # <string> basic auth password
@@ -31,7 +31,7 @@ datasources:
    # <bool> enable/disable with credentials headers
    with_credentials:
    # <bool> mark as default datasource. Max one per org
-   is_default:
+   is_default: true
    # <map> fields that will be converted to json and stored in json_data
    json_data:
       graphiteVersion: "1.1"
@@ -44,4 +44,4 @@ datasources:
      tlsClientKey: "..."
    version: 1
    # <bool> allow users to edit datasources from the UI.
-   editable: false
+   editable: true
