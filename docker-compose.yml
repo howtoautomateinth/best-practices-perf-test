@@ -6,9 +6,10 @@ services:
     image: rodolpheche/wiremock:latest
     ports:
       - '8888:8080'
+    restart: always
     volumes:
       - './wiremock:/home/wiremock'
-      
+
   grafana:
     image: grafana_hta
     build:
