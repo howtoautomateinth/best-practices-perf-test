@@ -21,9 +21,9 @@ datasources:
    # <string> database user, if used
    user:
    # <string> database name, if used
-   database:
+   database: myperfdb
    # <bool> enable/disable basic auth
-   basic_auth:
+   basic_auth: disable
    # <string> basic auth username
    basic_auth_user:
    # <string> basic auth password
