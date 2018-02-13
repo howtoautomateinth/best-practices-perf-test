@@ -7,8 +7,26 @@ services:
     ports:
       - '8888:8080'
     restart: always
+    networks:
+      - monitor
     volumes:
       - './wiremock:/home/wiremock'
+
+  gatling:
+    container_name: gatling-runner
+    image: gatling_hta
+    build:
+      context: dockerfile/gatling
+    command: [-s, sample.SampleService]
+    networks:
+      - monitor
+    depends_on:
+      - grafana
+    environment:
+      - LOCAL_USER_ID=`id -u $USER`
+    volumes:
+      - ./gatling/2.3.0/simulations:/opt/app/java/gatling/user-files/simulations
+      - ./gatling/2.3.0/results:/opt/app/java/gatling/results
 
   grafana:
     container_name: grafana_hta
@@ -31,6 +49,7 @@ services:
       context: dockerfile/influxdb
     ports:
       - "38086:8086"
+      - "2003:2003"
     networks:
       - monitor
     environment:
