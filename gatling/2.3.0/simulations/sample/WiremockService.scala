@@ -6,7 +6,7 @@ import io.gatling.http.Predef._
 import io.gatling.jdbc.Predef._
 import java.net.InetAddress
 
-class SampleService extends Simulation {
+class WiremockService extends Simulation {
 
 	val httpProtocol = http
 		.baseURL("http://wiremock-standalone:8080")
@@ -14,13 +14,12 @@ class SampleService extends Simulation {
 
   val myaddress = InetAddress.getLocalHost.toString
 
-	val scn = scenario("Sample Service Root")
+	val scn = scenario("Send request to wiremock")
 		.exec(http(myaddress).get("/home"))
 
 	setUp(
     scn.inject(
-			nothingFor(5 seconds),
-			constantUsersPerSec(150) during(100 minutes)
+		constantUsersPerSec(2) during(100 minutes)
     )
   ).protocols(httpProtocol)
 }
