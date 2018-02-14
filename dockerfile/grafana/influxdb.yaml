@@ -7,7 +7,7 @@ delete_datasources:
  # whats available in the datbase
 datasources:
    # <string, required> name of the datasource. Required
- - name: "Influxdb"
+ - name: "Graphite"
    # <string, required> datasource type. Required
    type: "influxdb"
    # <string, required> access mode. direct or proxy. Required
@@ -21,7 +21,7 @@ datasources:
    # <string> database user, if used
    user:
    # <string> database name, if used
-   database: "myperfdb"
+   database: "graphite"
    # <bool> enable/disable basic auth
    basic_auth: false
    # <string> basic auth username
